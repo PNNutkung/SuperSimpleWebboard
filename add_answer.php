@@ -26,7 +26,6 @@
         $dbarr->execute();
         $qrow = $dbarr->fetch();
         $qc = $qrow["qcount"] + 1;
-        echo $qc."<br/>";
 
         if($conn->query($sql) != false){
             $sql = "update question
