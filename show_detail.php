@@ -88,7 +88,7 @@ by <b>
     $conn = null;
 ?>
 Answer: <br/>
-<textarea name="a_answer" rows="5" cols="40"></textarea><br/>
+<textarea name="a_answer" rows="5" cols="40"></textarea><br/><br/>
 Name: <input type="text" name="a_name" size="30"><br/><br/>
 <input type="submit" value="Send">&nbsp;
 <input type="reset" value="Cancel">
