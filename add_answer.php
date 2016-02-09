@@ -21,10 +21,18 @@
         $sql2 = "insert into Answer values($answerno,$count,\"$a_answer\",\"$a_name\")";
         $conn->exec($sql2);
 
+        $sql = "select * from question where qno = $answerno";
+        $dbarr = $conn->prepare($sql);
+        $dbarr->execute();
+        $qrow = $dbarr->fetch();
+        $qc = $qrow["qcount"] + 1;
+        echo $qc."<br/>";
+
         if($conn->query($sql) != false){
             $sql = "update question
-                    set qCount = qCount+1
+                    set qcount=$qc
                     where qno = $answerno";
+            $conn->exec($sql);
             echo "Answer has been saved into database.<br/><br/>";
             echo "<a href=show_detail.php?item=$answerno>Back to the topic</a><br/>";
             echo "<a href=show_question.php>Webboard Main page</a>";
