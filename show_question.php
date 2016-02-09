@@ -19,14 +19,18 @@
                         order by qno Desc";
                 $questions = $conn->prepare($sql);
                 $questions->execute();
+                echo "<table style=\"width:100%\" border=\"1\" border=\"black\"";
+                echo "<tr><td>Q No.</td><td>Topic Name</td><td>Replies</td>";
                 foreach ($conn->query($sql) as $row) {
+                    echo "<tr>";
                     $no = $row["qno"];
-                    echo "<td>".$no."\n\t\t";
-                    echo "&nbsp <a href=\"show_detail.php?item=$no\">".$row["qtopic"]."</a> &nbsp";
-                    echo $row["qname"]."\n\t\t";
-                    echo "&nbsp".$row["qcount"]."<br/>\n\t";
+                    echo "<td>".$no."</td>\n\t\t";
+                    echo "<td><a href=\"show_detail.php?item=$no\">".$row["qtopic"]."</a> </td>";
+                    echo "by ".$row["qname"]."\n\t\t";
+                    echo "<td>".$row["qcount"]."</td>\n\t";
                     echo "</tr>\n";
                 }
+                echo "</table>";
             }
             catch(PDOException $e){
                 echo $sql."<br/>".$e->getMessage();
