@@ -57,39 +57,26 @@ Question
         $count->execute();
         if($count->rowCount() > 0) {
             foreach ($conn->query($sql) as $row) {
-?>
-Answer No.<b>
-<?php
-                echo $row["ano"];
-?>
-</b><br/>
-    <table width="100%" border="1">
-        <tr>
-            <td>
-<?php
-                echo renHTML($row["adetail"]);
-?><br/>
-by <b>
-<?php
-                echo renHTML($row["aname"]);
-?>
-                </b>
-            </td>
-        </tr>
-<?php
+                echo "Answer No.<b>".$row["ano"];
+                echo "</b><br/>";
+                echo "<table width=\"100%\" border=\"1\"><tr><td>";
+                echo renHTML($row["adetail"])."<br/>by <b>";
+                echo renHTML($row["aname"])."</b></td></tr>";
+                echo "</table>";
             }
         }
     }
     catch(PDOException $e){
         echo $sql."<br/>".$e->getMessage();
     }
-
-    echo "<form method=post action=add_answer.php?answerno=$item>";
     $conn = null;
+
+    echo "<br/><form method=post action=add_answer.php?answerno=$item>";
 ?>
-Answer: <br/>
-<textarea name="a_answer" rows="5" cols="40"></textarea><br/><br/>
-Name: <input type="text" name="a_name" size="30"><br/><br/>
-<input type="submit" value="Send">&nbsp;
-<input type="reset" value="Cancel">
+    Answer: <br/>
+    <textarea name="a_answer" rows="5" cols="40"></textarea><br/><br/>
+    Name: <input type="text" name="a_name" size="30"><br/><br/>
+    <input type="submit" value="Send">&nbsp;
+    <input type="reset" value="Cancel">
 </form>
+<a href=show_question.php>Webboard Main page</a>
