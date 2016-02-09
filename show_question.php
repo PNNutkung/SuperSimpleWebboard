@@ -25,8 +25,8 @@
                     echo "<tr>";
                     $no = $row["qno"];
                     echo "<td>".$no."</td>\n\t\t";
-                    echo "<td><a href=\"show_detail.php?item=$no\">".$row["qtopic"]."</a> </td>";
-                    echo "by ".$row["qname"]."\n\t\t";
+                    echo "<td><a href=\"show_detail.php?item=$no\">".$row["qtopic"]."</a> ";
+                    echo " by ".$row["qname"]."</td>\n\t\t";
                     echo "<td>".$row["qcount"]."</td>\n\t";
                     echo "</tr>\n";
                 }
